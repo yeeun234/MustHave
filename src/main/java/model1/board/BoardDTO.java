@@ -39,7 +39,7 @@ public class BoardDTO {
 	 this.id = id;
  }
  
- public java.sql.Date getPostdata(){
+ public java.sql.Date getPostdate(){
 	 return postdate; 
  }
  public void setPostdate(java.sql.Date postdate) {

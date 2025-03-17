@@ -71,5 +71,49 @@ public class BoardDAO extends JDBCConnect{
 		return bbs;
 	}
 	
+	//게시글 데이터를 받아 DB에 추가
+	public int insertWrite(BoardDTO dto) {
+		int result =0;
+		
+		try {
+			
+			String query = "Insert Into Board ( title,content,id,visitcount) Values (  ?,?,?,0)";
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, dto.getTitle());
+			psmt.setString(2, dto.getContent());
+			psmt.setString(3, dto.getId());
+			
+			result = psmt.executeUpdate();
+		}catch(Exception e) {
+			System.out.println("게시물 입력 중 예외 발생");
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	public BoardDTO selectView (String num) {
+		BoardDTO dto = new BoardDTO();
+	
+		try {
+			
+			String query = "Select B.*, M.name From Member M Inner Join board B On M.id =B.id Where num=?";
+			psmt = con.prepareStatement(query);
+			psmt.setString(1,num);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setNum(rs.getString(1));
+				dto.setTitle(rs.getString(2));
+				dto.setContent(rs.getString("content"));
+				dto.setPostdate(rs.getDate("postdate"));
+				dto.setId(rs.getString("Id"));
+				dto.setName(rs.getString("name"));
+			}
+		}catch(Exception e) {
+			System.out.println("게시물 상세보기 중 예외 발생");
+			e.printStackTrace();
+		}
+		return  dto;
+	}
 }
 
