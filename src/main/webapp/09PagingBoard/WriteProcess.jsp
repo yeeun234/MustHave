@@ -14,20 +14,19 @@ dto.setContent(content);
 dto.setId(session.getAttribute("UserId").toString());
 
 BoardDAO dao = new BoardDAO(application);
-
+try {
 	int iResult = dao.insertWrite(dto);
-// 	int iResult = 0;
-// 	for(int i =1; i<=100; i++){
-// 		dto.setTitle(title + "-" + i);
-// 		iResult = dao.insertWrite(dto);
-// }	
+	
+	
 	if(iResult == 1) {
 		response.sendRedirect("List.jsp");}
 	else {
 		JSFunction.alertBack("글쓰기에 실패하였습니다.",out);	
 	}
-dao.close();
-
+}	
+finally {
+	dao.close();
+}
 %>
 <!DOCTYPE html>
 <html>
