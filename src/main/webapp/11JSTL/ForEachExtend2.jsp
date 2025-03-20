@@ -24,7 +24,7 @@
 	<c:set var="lists" value="<%=lists%>">
 	</c:set>
 	<c:forEach items="${lists }" var="list">
-		<li>이름 : ${lists.name }, 나이 : ${lists.age }</li>
+		<li>이름 : ${list.name }, 나이 : ${list.age }</li>
 	</c:forEach>
 	
 	<h4>Map Collection </h4>
