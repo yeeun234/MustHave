@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h2>${ test }</h2>
 	<script >
 	function requestAction(frm,met) {
 		if(met ==1 ){
