@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("*.one")
 
+//url을 확인하면 musthave/*one이라 되어있음. 그리고 겟리퀘스트디스패처때문에 골격은출력되는것
 public class FrontController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
